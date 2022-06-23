@@ -1,0 +1,31 @@
+Question
+========
+
+Angenommen eine Variable X beschreibt die Zustimmung zum Likertitem *Sind Lehrerinnen und Lehrer gut bezahlt?* und ist __bimodal__ verteilt.
+
+Welche der folgenden Aussagen ist dann korrekt?
+
+Answerlist
+----------
+* X ist nicht in jedem Falle symmetrisch verteilt.
+* Arithmetisches Mittel und Median von X sind in jedem Fall gleich.
+* Die Streuung von X ist dann größer als von jeder unimodal verteilten Variable Y.
+* Die Daten weisen darauf hin, dass es bzgl. der Frage _drei_ "Meinungsgruppen" gibt.
+
+
+Solution
+========
+
+Answerlist
+----------
+* True
+* False
+* False
+* False 
+
+Meta-information
+================
+exname: Schiefe qualitativ beschreiben
+extype: mchoice
+exsolution: 1000
+exshuffle: 4

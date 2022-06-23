@@ -1,0 +1,29 @@
+Question
+========
+
+Welche der folgenden Informationen/Verteilungeseigenschaften kann man einem Boxplot entnehmen? (Nutzen Sie zur Beantwortung der Frage gerne die interaktive App auf https://apps.samuel-merk.de/Verteilungen-darstellen/ )
+
+Answerlist
+----------
+* Anzahl der Datenpunkte
+* Schiefe
+* Median
+* Bimodalität (Zweigipfligkeit)
+* große vs. kleine Streuung
+
+Solution
+========
+Answerlist
+----------
+* False
+* True
+* True
+* False
+* True
+
+Meta-information
+================
+exname: Eigenschaften von Boxplots
+extype: mchoice
+exsolution: 01101
+exshuffle: TRUE

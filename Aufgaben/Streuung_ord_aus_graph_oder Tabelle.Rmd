@@ -1,0 +1,97 @@
+```{r, Datengenese, echo = FALSE, message=FALSE}
+library(tidyverse)
+library(hrbrthemes)
+kat_start <- sample(1:100,1)
+kats <- rep(kat_start, 5) + 1:5
+
+dist1 = c(rep(kats[1], 10), rep(kats[2],30), rep(kats[3],8), 
+           rep(kats[4],40), rep(kats[5], 5))
+dist2 = c(rep(kats[1], 5), rep(kats[2],20), rep(kats[3],30), 
+           rep(kats[4],40), rep(kats[5], 50))
+dist3 = c(rep(kats[1], 15), rep(kats[2],13), rep(kats[3],16), 
+           rep(kats[4],14), rep(kats[5], 13))
+dist4 = c(rep(kats[1], 40), rep(kats[2],2), rep(kats[3],2), 
+           rep(kats[4],2), rep(kats[5], 38))
+dist5 = c(rep(kats[1], 2), rep(kats[2],42), rep(kats[3],40), 
+           rep(kats[4],2), rep(kats[5], 4))
+dist6 = c(rep(kats[1], 50), rep(kats[2], 49), rep(kats[3],51), 
+           rep(kats[4],48), rep(kats[5], 50))
+
+data <- tibble(`Ordinales Merkmal` = c(dist1, dist2, dist3, dist4, dist5, dist6),
+       Variable = c(rep("Variable A", length(dist1)), 
+                    rep("Variable B", length(dist2)), 
+                    rep("Variable C", length(dist3)),
+                    rep("Variable D", length(dist4)),
+                    rep("Variable E", length(dist5)),
+                    rep("Variable F", length(dist6))))
+
+
+displ <- sample(c("Tabelle", "Grafik1", "Grafik2"),1)
+```
+
+Question
+========
+
+Gegeben seien die **ordinalen** Variablen A, B, C, D, E und F mit den Ausprägungen `r paste(kats[1], ", ", kats[2], ", ", kats[3], ", ", kats[4], " und ", kats[5], sep = "")`. `r return(ifelse(displ == "Tabelle", "Der folgenden Tabelle", "Den folgenden Grafiken"))` können Sie entnehmen, welche Kategorie in welcher Variable wie oft vorkommt.
+
+```{r, echo=FALSE, out.width="50%", fig.width=10, fig.height=8, dev = "svg"}
+if(displ == "Tabelle"){
+  knitr::kable(table(data))
+}
+
+if(displ == "Grafik1"){
+  ggplot(data, aes(`Ordinales Merkmal`)) + geom_bar() + 
+    facet_wrap(~Variable) + theme_ipsum() + ylab("Häufigkeit") + xlab("Ausprägung der ordinalen Variablen A ... F")
+}
+```
+
+
+```{r, echo=FALSE, out.width="28%", dev = "svg"}
+if(displ == "Grafik2"){
+pie(table(data%>%filter(Variable == "Variable A")%>%.$`Ordinales Merkmal`),
+    main = "Variable A")
+pie(table(data%>%filter(Variable == "Variable B")%>%.$`Ordinales Merkmal`),
+    main = "Variable B")
+pie(table(data%>%filter(Variable == "Variable C")%>%.$`Ordinales Merkmal`),
+    main = "Variable C")
+pie(table(data%>%filter(Variable == "Variable D")%>%.$`Ordinales Merkmal`),
+    main = "Variable D")
+pie(table(data%>%filter(Variable == "Variable E")%>%.$`Ordinales Merkmal`),
+    main = "Variable E")
+pie(table(data%>%filter(Variable == "Variable F")%>%.$`Ordinales Merkmal`),
+    main = "Variable F")
+  
+}
+```
+
+Welche Variable weist die größte Streuung auf, welche die kleinste?
+
+
+
+Answerlist
+----------
+* Größte Streuung: D; kleinste Streuung E 
+* Größte Streuung: F; kleinste Streuung D 
+* Größte Streuung: F; kleinste Streuung C 
+* Größte Streuung: A; kleinste Streuung B 
+* Größte Streung: B; kleinste Streuung C 
+
+
+Solution
+========
+
+Answerlist
+----------
+* True
+* False
+* False
+* False
+* False
+
+
+Meta-information
+================
+exname: AD_berechnen
+extype: schoice
+exsolution: 10000
+exshuffle: 5

@@ -1,0 +1,11 @@
+Question
+========
+
+Skizzieren Sie ein Histogramm, das eine empirische Variable zeigt, die in etwa normalverteilt ist mit $\mu = 500$, $SD = 100$, $Range = [0,1000]$. Zeichnen Sie außerdem ein Histogramm einer empirischen Variable, die bimodal ist und (direkt erkennbar) eine geringere $SD$ aufweist.
+
+
+Meta-information
+================
+exname: Bomidale Verteilugn skizzieren mit geringerer SD
+extype: string
+exsolution: kljs slkdjhalskdjh 

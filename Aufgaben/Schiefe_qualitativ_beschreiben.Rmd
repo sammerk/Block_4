@@ -1,0 +1,21 @@
+Question
+========
+
+Angenommen eine Variable X ist __linksschief__ verteilt.
+
+Welche der folgenden Aussagen ist dann korrekt?
+
+Answerlist
+----------
+* X ist symmetrisch verteilt.
+* Arithmetisches Mittel und Median von X sind gleich.
+* Die Hälfte der Datenpunkte über bzw. unterhalb des Medians weisen unterschiedlich große Streuungen (Standardabweichungen) auf. 
+* Die Hälfte aller Datenpunkte, welche kleiner gleich dem Median sind, haben den kleineren durchschnittlichen Abstand zum arithmetischen Mittel (dieser unteren Hälfte) als die andere Hälfte der Datenpunkte von X.
+
+
+Meta-information
+================
+exname: Schiefe qualitativ beschreiben
+extype: mchoice
+exsolution: 0010
+exshuffle: 4

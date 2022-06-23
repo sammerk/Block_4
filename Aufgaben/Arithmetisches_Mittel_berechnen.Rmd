@@ -1,0 +1,39 @@
+```{r, Datengenese, echo = FALSE}
+x <- sample(1:100, 8)
+am <- mean(x)
+```
+
+Question
+========
+
+Gegeben sei die metrische Variable mit folgenden Ausprägungen: X = (`r x[1]`, `r x[2]`, `r x[3]`, `r x[4]`, `r x[5]`, `r x[6]`, `r x[7]`, `r x[8]`).  
+Welchen Wert hat das arithmetische Mittel von X (gerundet auf eine Nachkommastelle)?
+
+
+Answerlist
+----------
+* `r e1 <- rnorm(1,0,6); round(am + ifelse(e1>0.1,e1,0.2), 1)`
+* `r e2 <- rnorm(1,0,6); round(am + ifelse(e2>0.1,e2,0.2), 1)`
+* `r round(am, 1)`
+* `r e3 <- rnorm(1,0,6); round(am + ifelse(e3>0.1,e3,0.2), 1)`
+* `r e4 <- rnorm(1,0,6); round(am + ifelse(e4>0.1,e4,0.2), 1)`
+
+Solution
+========
+Das arithmetische Mittel beträgt $\bar{X}= `r sprintf("%s", round(am, 1))`$
+
+Answerlist
+----------
+* False
+* False
+* True
+* False
+* False
+
+
+Meta-information
+================
+exname: Arithmetisches Mittel berechnen
+extype: schoice
+exsolution: 00100
+exshuffle: 5

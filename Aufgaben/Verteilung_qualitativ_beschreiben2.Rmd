@@ -1,0 +1,85 @@
+```{r, Datengenese, echo = FALSE, message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(hrbrthemes)
+
+### Datengenese ########################################################
+mu1 <- log(1)   
+mu2 <- log(50)
+sig1 <- log(3)
+sig2 <- log(3)
+cpct <- 0.5   
+n <- 103
+
+bimodalDistFunc <- function (n,cpct, mu1, mu2, sig1, sig2) {
+  y0 <- rlnorm(n,mean=mu1, sd = sig1)
+  y1 <- rlnorm(n,mean=mu2, sd = sig2)
+  set.seed(937859)
+  flag <- rbinom(n,size=1,prob=cpct)
+  y <- y0*(1 - flag) + y1*flag 
+}
+
+vert_eig_data <- tibble(`kleine Streuung` = rnorm(800, 10, 2),
+                        `große Streuung` = rnorm(800, 10, 7),
+                        `Bimodalität` = log(bimodalDistFunc(n=800,cpct,mu1,mu2, sig1,sig2))*1.5+5,
+                        `Linksschiefe` = (rlnorm(800, 0 , 1)-1.5)*(-5)+7.5)%>%
+  # round(., 0)%>%
+  mutate(`große Streuung` = ifelse(`große Streuung` > 15, NA, 
+                                   ifelse(`große Streuung` < 0, NA, `große Streuung`)),
+         `kleine Streuung` = ifelse(`kleine Streuung` > 15, NA, 
+                                    ifelse(`kleine Streuung` < 0, NA, `kleine Streuung`)),
+         `Bimodalität` = ifelse(`Bimodalität` > 15, NA, 
+                                ifelse(`Bimodalität` < 0, NA, `Bimodalität`)),
+         `Linksschiefe` = ifelse(`Linksschiefe` > 15, NA, 
+                                 ifelse(`Linksschiefe` < 0, NA, `Linksschiefe`)))%>%
+  gather(Variable, Notenpunkte)%>%
+  mutate(dummy = 1)
+```
+
+Question
+========
+
+Gegeben sei die folgende Verteilung von Notenpunkten in einer gemeinsamen Oberstufenklausur.
+```{r, fig.width=6, echo=F, warning=F, fig.path = "", fig.cap = "", results = "hide"}
+ggplot(vert_eig_data%>%
+       dplyr::filter(Variable == "Linksschiefe"), aes(x=Notenpunkte)) + geom_histogram(breaks = seq(-0.5, 15.5, 1)) +
+      theme_ipsum_rc() +
+      labs(title = "Histogramm",
+           subtitle = "Notenpunkte einer Oberstufenklausur",
+           y = "Anzahl Schüler*innen") + 
+      xlim(-1,16) + 
+      theme(axis.text.y=element_blank())
+```
+
+
+Welche Aussage ist korrekt *und* enthält die meiste Information?
+
+Answerlist
+----------
+* Die Verteilung ist klar linksschief und  (einigermaßen) symmetrisch.
+* Die Verteilung ist klar rechtssteil und  (einigermaßen) symmetrisch.
+* Die Verteilung ist klar L-förmig und  (einigermaßen) symmetrisch.
+* Der Modalwert liegt klar links der zentralen Tendenz.
+* Die Verteilung ist klar bimodal.
+* Die Verteilung ist klar linksschief.
+
+Solution
+========
+
+Answerlist
+----------
+* False
+* False
+* False
+* False
+* False
+* True
+
+
+Meta-information
+================
+exname: Verteilung beschreiben Q2
+extype: schoice
+exsolution: 000001
+exshuffle: 6
